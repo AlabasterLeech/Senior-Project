@@ -24,8 +24,8 @@ def main():
     testscraper.seturl(_LEAGUE_URL)
     testscraper.parse()
     testscraper.grableaguedata()
-    testscraper.grabteamdata()
-    #testscraper.navigate()
+    #testscraper.grabteamdata()
+    testscraper.navigate()
 class webscraper():
     """
     The webscraper object serves as the overarching container for the complete functionality of the webscraper as described
@@ -53,27 +53,52 @@ class webscraper():
     def navigate(self):
         try: 
             emulator = webdriver.Chrome()
-            emulator.get(_TEST_URL)
+            #league_list = emulator.find_elements(By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[5]')
+            more_li = True
+            league_index = 3
 
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[1]'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[1]/ul/li[3]/a'))).click()
-            #form = emulator.find_element(By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form')
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[2]'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[2]/ul/li[2]/a'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[3]'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[3]/ul/li[2]/a'))).click()
-            time.sleep(3)
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[4]'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[4]/ul/li[2]/a'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[5]'))).click()
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[5]/ul/li[2]/a'))).click()
-            #WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[6]'))).click()
-            #WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[6]/ul/li[2]/a'))).click()
-            #WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]'))).click()
-            #WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]/ul/li[2]/a'))).click()
-            time.sleep(3)
-            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[3]/button'))).click()
-            print(emulator.current_url)
+            while more_li:
+                try:
+                    emulator.get(_TEST_URL)
+
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[1]'))).click()
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[1]/ul/li[4]/a'))).click()
+                    #form = emulator.find_element(By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form')
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[2]'))).click()
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[2]/ul/li[3]'))).click()
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[3]'))).click()
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[3]/ul/li[2]/a'))).click()
+                    time.sleep(3)
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[4]'))).click()
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[4]/ul/li[7]/a'))).click()
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[5]'))).click()
+                    league_xpath = '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[5]/ul/li[' + str(league_index) + ']/a'
+                    WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, league_xpath))).click()                    
+                    if(emulator.find_element(By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[6]').text != "Gebiet wählen"):
+                        if(emulator.find_element(By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]') != "Wettbewerb wählen"):
+                            time.sleep(3)
+                            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[3]/button'))).click()
+                            print(emulator.current_url)
+                        else:
+                            time.sleep(3)
+                            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]'))).click()
+                            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]/ul/li[2]/a'))).click()
+                            time.sleep(3)
+                            WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[3]/button'))).click()
+                            print(emulator.current_url)
+                    else:
+                        WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[6]'))).click()
+                        WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[6]/ul/li[2]/a'))).click()
+                        time.sleep(3)
+                        WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]'))).click()
+                        WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[1]/div[7]/ul/li[2]/a'))).click()
+                        time.sleep(3)
+                        WebDriverWait(emulator, 20).until(EC.element_to_be_clickable((By.XPATH, '//*[@id="news-sidebar"]/div[1]/div/div/div/form/div[3]/button'))).click()
+                        print(emulator.current_url)
+                except: 
+                    print("All li moved through, li: " + str(league_index))
+                    more_li = False
+                league_index += 1
         except:
             print("Navigate Error")
 
